@@ -1,0 +1,27 @@
+﻿9f76a28b-9f6f-475c-9dc6-c965e080a97c;09872464;5000;Deposit to Account;Savings;4/26/2021 10:00:01 PM
+9f76a28b-9f6f-475c-9dc6-c965e080a97c;09872204;0;Deposit to Account;Current;4/26/2021 10:05:44 PM
+7b99112c-b44d-4c97-8614-465e8811ff64;09872204;2000;Deposit to Account;Current;4/26/2021 10:06:19 PM
+29a6a459-6e23-4697-9dbc-5a6b1759556e;09873351;3000;Deposit to Account;Savings;4/26/2021 11:06:33 PM
+740843f2-323a-41ec-adf5-edbad2f5d055;09872464;-3000;Withdraw;Savings;4/26/2021 11:33:29 PM
+f7ff26d0-00a9-4dda-85a5-c0a342f3cc31;09873351;3000;Deposit to Account;Savings;4/26/2021 11:33:29 PM
+193e3748-e295-4d2d-bf29-0242ed257c81;09872464;3000;Deposit to Account;Savings;4/27/2021 12:47:08 AM
+322b1955-f9b5-4e55-b643-c72e81da68e1;09872464;1000;Deposit to Account;Savings;4/27/2021 12:50:08 AM
+8f5b71e8-4bec-48df-b074-3fd9d5dcbf13;09872464;1000;Deposit to Account;Savings;4/27/2021 2:31:26 AM
+4a4e9e74-cf4b-4f68-af5e-8e7b42e94b36;09870067;1000;Deposit to Account;Savings;4/27/2021 7:50:39 AM
+386667ad-bc92-4b07-971d-440a27ef1631;09876217;1000;Deposit to Account;Savings;4/27/2021 8:04:54 AM
+adfc056d-027e-4498-b34d-f1028220e222;09875300;1000;Deposit to Account;Savings;4/27/2021 8:09:10 AM
+80289725-8d87-44e9-9070-eaee26e5f297;09873151;1000;Deposit to Account;Savings;4/27/2021 8:13:34 AM
+8556aa44-de24-485b-a16a-e735a08a1c50;09876043;2000;Deposit to Account;Savings;4/27/2021 8:14:34 AM
+be2c9973-82c7-4aef-9eb9-4595836fb17a;09871652;10000;Deposit to Account;Savings;4/27/2021 8:21:09 AM
+23207f1a-fc19-40cd-bb06-9747f1dfedf0;09878465;2000;Deposit to Account;Savings;4/27/2021 8:37:08 AM
+0e7c3acf-ca2a-4c61-9f57-821d92933c73;09872804;4000;Deposit to Account;Savings;4/27/2021 8:39:27 AM
+ace1387b-ac3e-4405-a91f-4557753d4573;09870778;2000;Deposit to Account;Savings;4/27/2021 8:46:56 AM
+fc8f689f-d02a-4179-9a34-8c121366cddd;09878310;4000;Deposit to Account;Savings;4/27/2021 8:48:50 AM
+19a59fe6-84ed-4359-b404-a8eb450c2cea;09874482;3000;Deposit to Account;Savings;4/27/2021 8:56:48 AM
+1c63ef14-3e1a-42c9-927d-02f03ff25a63;09870368;1000;Deposit to Account;Savings;4/27/2021 9:12:09 AM
+7159ef63-e187-4d06-813a-f70440c399b1;09876017;4000;Deposit to Account;Savings;4/27/2021 9:31:12 AM
+0d15b418-7122-498c-8729-abfd63ed1d19;09878664;1000;Deposit to Account;Savings;4/27/2021 1:38:17 PM
+8a77e49f-bebf-4851-a373-01bbdd8707fa;09875175;3000;Deposit to Account;Savings;4/27/2021 4:32:24 PM
+54c4baa3-ca25-44be-a077-30a5faa2ba28;09874582;2000;Deposit to Account;Savings;4/27/2021 5:08:07 PM
+a10c7c19-1fd4-48b0-b0c0-d0ac8dfbd084;09874518;5000;Deposit to Account;Current;4/27/2021 11:22:48 PM
+54c4baa3-ca25-44be-a077-30a5faa2ba28                                                                ;09875233;0;Deposit to Account;Current;4/28/2021 4:44:52 AM
