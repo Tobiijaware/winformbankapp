@@ -23,14 +23,24 @@ namespace JBank.Lib.Core.Repository
             AccountData.AddModelToFile(acct);
         }
 
-        public void Deposit(string accno, decimal amt, string type)
+        public string Deposit(string accno, decimal amt, string type)
         {
-            var TransactionDate = DateTime.Now;
-            var id = Guid.NewGuid().ToString();
-            var newtransact = new Transact(id, accno, amt, "Deposit to Account", type, TransactionDate);
-            TransactionData.AddModel(newtransact);
-            TransactionData.AddModelToFile(newtransact);
+            var res = "";
+            if (amt < 1)
+            {
+                res = "Invalid Amount";
+            }
+            else
+            {
+                var TransactionDate = DateTime.Now;
+                var id = Guid.NewGuid().ToString();
+                var newtransact = new Transact(id, accno, amt, "Deposit to Account", type, TransactionDate);
+                TransactionData.AddModel(newtransact);
+                TransactionData.AddModelToFile(newtransact);
+                res = "Success";
+            }
 
+            return res;
         }
 
         public string[] Transfer(string senderNumber, string receiverNumber, decimal amt, string type)

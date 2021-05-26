@@ -20,7 +20,9 @@ namespace JBankUI
             Application.SetCompatibleTextRenderingDefault(false);
             GlobalConfig.AddIinstance();
             Application.Run(new Login(GlobalConfig.IAuthenticationinstance));
-            
+
+
         }
+
+     }
     }
-}

@@ -4,7 +4,6 @@ using JBank.Lib.Core.Repository;
 using JBank.Lib.Data;
 using JBank.Lib.Model;
 using System;
-using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Windows.Forms;
 
@@ -23,27 +22,23 @@ namespace JBankUI
         public static string userDetails(string email)
         {
             string user = "";
-            using (SqlConnection con = new SqlConnection(Db.connectionString))
+            using (SqlConnection con = new SqlConnection(Db._conString))
             {
-              
 
                 con.Open();
                 if (con.State == System.Data.ConnectionState.Open)
                 {
-                    SqlCommand check = new SqlCommand("SELECT * FROM customers WHERE email = @email", con);
+                    SqlCommand check = new SqlCommand("SELECT * FROM Customers WHERE email = @email", con);
                     check.Parameters.AddWithValue("@email", email);
                     SqlDataReader sReader = check.ExecuteReader();
-
-                    if (sReader.Read())
+                    while (sReader.Read())
                     {
-                      user = sReader["firstname"].ToString().Trim() +" "+ sReader["lastname"].ToString().Trim();
-                      UserSession.CurrentUserID.Add(sReader["id"].ToString());
+                        user = sReader["firstname"].ToString() + " " + sReader["lastname"].ToString();
+                        UserSession.CurrentUserID.Add(sReader["Id"].ToString());
                     }
-
 
                 }
             }
-
             return user;
         }
 
@@ -51,20 +46,20 @@ namespace JBankUI
 
         private void Dashboard_Load(object sender, EventArgs e)
         {
-            try { 
-            string email = "";
            
-            foreach (var item in UserSession.CurrentUser)
+            try
             {
-                 email = item.Split(",")[0];
-               
-            }
+                string email = "";
 
+                foreach (var item in UserSession.CurrentUser)
+                {
+                    email = item.Split(",")[0];
+
+                }
                 userName.Text = userDetails(email);
             }
             catch (Exception ex)
             {
-
                 MessageBox.Show(ex.Message);
             }
 
@@ -74,6 +69,7 @@ namespace JBankUI
         {
 
         }
+
 
         private void dashboardBtn_Click(object sender, EventArgs e)
         {
@@ -174,25 +170,23 @@ namespace JBankUI
                 {
                     id = item.Split(",")[0];
                 }
-
-                using (SqlConnection con = new SqlConnection(Db.connectionString))
+                using (SqlConnection con = new SqlConnection(Db._conString))
                 {
                     con.Open();
                     if (con.State == System.Data.ConnectionState.Open)
                     {
-                        SqlCommand check = new SqlCommand("SELECT COUNT(*) FROM account WHERE id = @id", con);
+                        SqlCommand check = new SqlCommand("SELECT COUNT(*) FROM Accounts WHERE userID = @id", con);
                         check.Parameters.Add(new SqlParameter("@id", id));
-
 
                         int UserExist = (int)check.ExecuteScalar();
                         if (UserExist != 2)
                         {
-                            SqlCommand checkacc = new SqlCommand("SELECT * FROM account WHERE id = @id", con);
+                            SqlCommand checkacc = new SqlCommand("SELECT * FROM Accounts WHERE userID = @id", con);
                             checkacc.Parameters.Add(new SqlParameter("@id", id));
                             SqlDataReader sReader = checkacc.ExecuteReader();
                             while (sReader.Read())
                             {
-                                if (sReader["acctype"].ToString().Trim() == "Savings")
+                                if (sReader["AccType"].ToString() == "Savings")
                                 {
                                     string accType = "Current";
                                     var date = DateTime.Now;
@@ -201,7 +195,7 @@ namespace JBankUI
                                     acctrepo.CreateDBAccount(id, newacct, 0);
                                     MessageBox.Show("Your Current Account has been successfully created for you");
                                 }
-                                else if (sReader["acctype"].ToString().Trim() == "Current")
+                                else if (sReader["AccType"].ToString().Trim() == "Current")
                                 {
                                     string accType = "Savings";
                                     var date = DateTime.Now;
@@ -209,69 +203,60 @@ namespace JBankUI
                                     var newacct = new Account(acctno, id, 1000, accType, date);
                                     acctrepo.CreateDBAccount(id, newacct, 1000);
                                     MessageBox.Show("Your Savings Account has been successfully created for you");
-
                                 }
                             }
                         }
                         else
                         {
-
                             MessageBox.Show("You Already Have Two Accounts");
-                            
+
                         }
                     }
-
 
                 }
             }
             catch (Exception ex)
             {
-
                 MessageBox.Show(ex.Message);
             }
+            //        string id = AuthenticationRepository.CurrentUser.Id;
+            //        //AccountData.LoadModelsFromFile();
+            //        var foundcustomer = AccountData.Accounts.FindAll(c => c.OwnerId == id);
+            //        var number = foundcustomer.Count;
+            //        if(number > 1)
+            //        {
+            //            MessageBox.Show("You can not have more than two(2) Accounts");
+            //        }
+            //        else
+            //        {
+            //            foreach (var item in foundcustomer)
+            //            {
+            //                if (item.Type == "Savings")
+            //                {
 
-            /*string id = AuthenticationRepository.CurrentUser.Id;
-            //AccountData.LoadModelsFromFile();
-            var foundcustomer = AccountData.Accounts.FindAll(c => c.OwnerId == id);
-            var number = foundcustomer.Count;
-            if(number > 1)
-            {
-                MessageBox.Show("You can not have more than two(2) Accounts");
-            }
-            else
-            {
-                foreach (var item in foundcustomer)
-                {
-                    if (item.Type == "Savings")
-                    {
+            //                    string accType = "Current"; 
+            //                    var date = DateTime.Now;
+            //                    string acctno = Utilities.GenerateNumber();
+            //                    var newacct = new Account(acctno, id, 0, accType, date);
+            //                    acctrepo.CreateAccount(newacct, 0);
+            //                    MessageBox.Show("Your Current Account has been successfully created for you"); 
 
-                        string accType = "Current"; 
-                        var date = DateTime.Now;
-                        string acctno = Utilities.GenerateNumber();
-                        var newacct = new Account(acctno, id, 0, accType, date);
-                        acctrepo.CreateAccount(newacct, 0);
-                        MessageBox.Show("Your Current Account has been successfully created for you"); 
-                     
-    
-                    }
-                    else if (item.Type == "Current")
-                    {
+            //;
+            //                }
+            //                else if (item.Type == "Current")
+            //                {
 
-                        string accType = "Savings";
-                        var date = DateTime.Now;
-                        string acctno = Utilities.GenerateNumber();
-                        var newacct = new Account(acctno, id, 1000, accType, date);
-                        acctrepo.CreateAccount(newacct, 1000);
-                        MessageBox.Show("Your Savings Account has been successfully created for you");
-                      
-                    }
-                }
-            }*/
+            //                    string accType = "Savings";
+            //                    var date = DateTime.Now;
+            //                    string acctno = Utilities.GenerateNumber();
+            //                    var newacct = new Account(acctno, id, 1000, accType, date);
+            //                    acctrepo.CreateAccount(newacct, 1000);
+            //                    MessageBox.Show("Your Savings Account has been successfully created for you");
 
-        }
+            //                }
+            //            }
+            //        }
 
-        private void label10_Click(object sender, EventArgs e)
-        {
 
         }
     }

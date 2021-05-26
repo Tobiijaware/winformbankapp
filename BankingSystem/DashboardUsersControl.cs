@@ -43,61 +43,57 @@ namespace JBankUI
 
             string id = "";
             string foundcustomer = "";
-
             foreach (var item in UserSession.CurrentUserID)
             {
                 id = item.Split(",")[0];
             }
 
-
-            using (SqlConnection con = new SqlConnection(Db.connectionString))
+            using (SqlConnection con = new SqlConnection(Db._conString))
             {
                 con.Open();
                 if (con.State == System.Data.ConnectionState.Open)
                 {
-                    SqlCommand check = new SqlCommand("SELECT * FROM account WHERE id = @id", con);
+                    SqlCommand check = new SqlCommand("SELECT * FROM Accounts WHERE userID = @id", con);
                     check.Parameters.AddWithValue("@id", id);
-                   
-                    SqlDataReader sReader = check.ExecuteReader();
 
+                    SqlDataReader sReader = check.ExecuteReader();
                     while (sReader.Read())
                     {
-                        foundcustomer = sReader["acctype"].ToString().Trim();
-                        var accno = sReader["accnumber"].ToString().Trim();
-                       
+                        foundcustomer = sReader["AccType"].ToString().Trim();
+                        var accno = sReader["AccNumber"].ToString().Trim();
+
                         if (foundcustomer == "Savings")
                         {
-                            savAmnt.Text = acctrepo.GetDBBalance(accno).ToString();
+                            savAmnt.Text = acctrepo.GetDbBalance(accno).ToString();
                             UCSavingPanel.Visible = true;
-                        
+
                         }
                         else if (foundcustomer == "Current")
                         {
-                            currAmnt.Text = acctrepo.GetDBBalance(accno).ToString();
+                            currAmnt.Text = acctrepo.GetDbBalance(accno).ToString();
                             UCcurrentPanel.Visible = true;
                         }
                     }
 
-
                 }
             }
 
-
-            /* AccountData.LoadModelsFromFile();
-             var foundcustomer = AccountData.Accounts.FindAll(c => c.OwnerId == id);
-             foreach (var item in foundcustomer)
-             {
-                 if (item.Type == "Savings")
-                 {
-                         savAmnt.Text = acctrepo.GetBalance(item.AccountNumber).ToString();
-                     UCSavingPanel.Visible = true;
-                 }
-                 else if (item.Type == "Current")
-                 {
-                     currAmnt.Text = acctrepo.GetBalance(item.AccountNumber).ToString();
-                     UCcurrentPanel.Visible = true;
-                 }
-             }*/
+            //string id = AuthenticationRepository.CurrentUser.Id;
+            //AccountData.LoadModelsFromFile();
+            //var foundcustomer = AccountData.Accounts.FindAll(c => c.OwnerId == id);
+            //foreach (var item in foundcustomer)
+            //{
+            //    if (item.Type == "Savings")
+            //    {
+            //            savAmnt.Text = acctrepo.GetBalance(item.AccountNumber).ToString();
+            //        UCSavingPanel.Visible = true;
+            //    }
+            //    else if (item.Type == "Current")
+            //    {
+            //        currAmnt.Text = acctrepo.GetBalance(item.AccountNumber).ToString();
+            //        UCcurrentPanel.Visible = true;
+            //    }
+            //}
 
         }
 

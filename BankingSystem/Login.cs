@@ -5,7 +5,6 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
-using System.Data.SqlClient;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using JBank.Lib.Data;
@@ -13,7 +12,7 @@ using JBank.Lib.Core.Interface;
 using JBank.Lib.Core.Repository;
 using System.Threading;
 using JBank.Lib.Core;
-using JBank.Lib.Common;
+using System.Data.SqlClient;
 using JBank.Lib.Model;
 
 namespace JBankUI
@@ -100,21 +99,15 @@ namespace JBankUI
 
         private void login_load(object sender, EventArgs e)
         {
-            //button3.Visible = false;
+           
             _obj = this;
 
-            //CreateAcc create1 = new CreateAcc();
-            //create1.Dock = DockStyle.Fill;
-            //Content.Controls.Add(create1);
         }
-
 
         private void button3_Click(object sender, EventArgs e)
         {
             CreateAcc create1 = new CreateAcc();
             ShowControl(create1);
-            //Content.Controls["CreateAcc"].BringToFront();
-            //button3.Visible = false;
         }
 
         private void panel3_Paint(object sender, PaintEventArgs e)
@@ -149,19 +142,15 @@ namespace JBankUI
 
         private void button1_Click(object sender, EventArgs e)
         {
-           // CustomerData.LoadModelsFromFile();
 
-            //var foundcustomer = CustomerData.Customers.Find(c => c.Email == email_login.Text);
-            
 
-            using (SqlConnection con = new SqlConnection(Db.connectionString))
+            using (SqlConnection con = new SqlConnection(Db._conString))
             {
                 con.Open();
                 if (con.State == System.Data.ConnectionState.Open)
                 {
                     SqlCommand check = new SqlCommand("SELECT COUNT(*) FROM customers WHERE email = @email", con);
                     check.Parameters.Add(new SqlParameter("@email", email_login.Text));
-                  
 
                     int UserExist = (int)check.ExecuteScalar();
                     if (UserExist == 1)
@@ -169,9 +158,9 @@ namespace JBankUI
                         //check existence of a user
                         if (authrepo.Login(email_login.Text, pass_login.Text))
                         {
-                         
-                                    UserSession.CurrentUser.Add(email_login.Text);
-                             
+
+                                UserSession.CurrentUser.Add(email_login.Text);
+
                             this.Hide();
                             Dashboard db = new Dashboard(GlobalConfig.IAccountinstance);
                             db.Show();
@@ -181,33 +170,38 @@ namespace JBankUI
                             MessageBox.Show("Incorrect Password/Email");
                         }
                     }
+                    else
+                    {
+                        MessageBox.Show("User does not exist");
+                    }
                 }
             }
 
 
+            //CustomerData.LoadModelsFromFile();
 
+            //var foundcustomer = CustomerData.Customers.Find(c => c.Email == email_login.Text);
 
-
-                    /* if (foundcustomer != null)
-                     {
-                         if (authrepo.Login(email_login.Text, pass_login.Text))
-                         {
-                             AuthenticationRepository.CurrentUser = foundcustomer;
-                             Thread.Sleep(1000);
-                             this.Hide();
-                             Dashboard db = new Dashboard(GlobalConfig.IAccountinstance);
-                             db.Show();
-                         }
-                         else
-                         {
-                             MessageBox.Show("Incorrect Password/Email");
-                         }
-                     }
-                     else
-                     {
-                         MessageBox.Show("User not found");
-                     }*/
-                }
+            //if (foundcustomer != null)
+            //{
+            //    if (authrepo.Login(email_login.Text, pass_login.Text))
+            //    {
+            //        AuthenticationRepository.CurrentUser = foundcustomer;
+            //        Thread.Sleep(1000);
+            //        this.Hide();
+            //        Dashboard db = new Dashboard(GlobalConfig.IAccountinstance);
+            //        db.Show();
+            //    }
+            //    else
+            //    {
+            //        MessageBox.Show("Incorrect Password/Email");
+            //    }
+            //}
+            //else
+            //{
+            //    MessageBox.Show("User not found");
+            //}
+        }
 
         private void email_login_Click(object sender, EventArgs e)
         {
@@ -226,4 +220,3 @@ namespace JBankUI
         }
     }
 }
-

@@ -293,7 +293,7 @@ namespace JBankUI
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(103, 22);
             this.label3.TabIndex = 1;
-            this.label3.Text = "Since 1995";
+            this.label3.Text = "Since 1991";
             // 
             // label2
             // 
@@ -301,11 +301,11 @@ namespace JBankUI
             this.label2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.label2.Font = new System.Drawing.Font("Century Gothic", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label2.ForeColor = System.Drawing.SystemColors.Control;
-            this.label2.Location = new System.Drawing.Point(100, 20);
+            this.label2.Location = new System.Drawing.Point(33, 23);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(229, 38);
+            this.label2.Size = new System.Drawing.Size(507, 38);
             this.label2.TabIndex = 0;
-            this.label2.Text = "DOTNET BANK";
+            this.label2.Text = "JOSHUA MICRO-FINANCE BANK";
             // 
             // userControlPanel
             // 
@@ -370,12 +370,11 @@ namespace JBankUI
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Century Gothic", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label10.ForeColor = System.Drawing.Color.Red;
-            this.label10.Location = new System.Drawing.Point(87, 373);
+            this.label10.Location = new System.Drawing.Point(90, 383);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(305, 102);
+            this.label10.Size = new System.Drawing.Size(477, 102);
             this.label10.TabIndex = 5;
-            this.label10.Text = "a staff of DotNet Bank\r\n\r\n\r\n";
-            this.label10.Click += new System.EventHandler(this.label10_Click);
+            this.label10.Text = "a staff of Josh Micro-Finance Bank\r\n\r\n\r\n";
             // 
             // label9
             // 
@@ -415,11 +414,11 @@ namespace JBankUI
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Century Gothic", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label6.ForeColor = System.Drawing.Color.Red;
-            this.label6.Location = new System.Drawing.Point(100, 144);
+            this.label6.Location = new System.Drawing.Point(48, 144);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(397, 34);
+            this.label6.Size = new System.Drawing.Size(564, 34);
             this.label6.TabIndex = 1;
-            this.label6.Text = "DotNet bank will not for any \r\n";
+            this.label6.Text = "Josh Micro-finance bank will not for any \r\n";
             // 
             // label4
             // 

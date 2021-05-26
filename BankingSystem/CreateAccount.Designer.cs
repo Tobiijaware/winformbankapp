@@ -32,15 +32,15 @@ namespace JBankUI
             this.button3 = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
             this.label3 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.note = new System.Windows.Forms.TextBox();
             this.savingsPanel = new System.Windows.Forms.Panel();
             this.textBox1 = new System.Windows.Forms.TextBox();
+            this.button1 = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
             this.CurrentPanel = new System.Windows.Forms.Panel();
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.button4 = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
-            this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
@@ -79,7 +79,7 @@ namespace JBankUI
             // 
             this.panel3.BackColor = System.Drawing.SystemColors.Control;
             this.panel3.Controls.Add(this.label3);
-            this.panel3.Controls.Add(this.textBox2);
+            this.panel3.Controls.Add(this.note);
             this.panel3.Cursor = System.Windows.Forms.Cursors.Default;
             this.panel3.Location = new System.Drawing.Point(0, 517);
             this.panel3.Name = "panel3";
@@ -99,17 +99,18 @@ namespace JBankUI
             this.label3.TabIndex = 12;
             this.label3.Text = "Note:";
             // 
-            // textBox2
+            // note
             // 
-            this.textBox2.BackColor = System.Drawing.SystemColors.Control;
-            this.textBox2.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox2.Font = new System.Drawing.Font("Century Gothic", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.textBox2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(128)))), ((int)(((byte)(185)))));
-            this.textBox2.Location = new System.Drawing.Point(131, 11);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.PlaceholderText = "Enter a narration for your transaction";
-            this.textBox2.Size = new System.Drawing.Size(261, 20);
-            this.textBox2.TabIndex = 5;
+            this.note.BackColor = System.Drawing.SystemColors.Control;
+            this.note.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.note.Font = new System.Drawing.Font("Century Gothic", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.note.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(128)))), ((int)(((byte)(185)))));
+            this.note.Location = new System.Drawing.Point(131, 11);
+            this.note.Name = "note";
+            this.note.PlaceholderText = "Enter a narration for your transaction";
+            this.note.Size = new System.Drawing.Size(261, 20);
+            this.note.TabIndex = 5;
+            this.note.TextChanged += new System.EventHandler(this.note_TextChanged);
             // 
             // savingsPanel
             // 
@@ -133,6 +134,34 @@ namespace JBankUI
             this.textBox1.PlaceholderText = "Enter the amount here";
             this.textBox1.Size = new System.Drawing.Size(319, 25);
             this.textBox1.TabIndex = 13;
+            // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.Transparent;
+            this.button1.Cursor = System.Windows.Forms.Cursors.Default;
+            this.button1.FlatAppearance.BorderSize = 0;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Font = new System.Drawing.Font("Century Gothic", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.button1.ForeColor = System.Drawing.Color.Red;
+            this.button1.Location = new System.Drawing.Point(27, 71);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(358, 34);
+            this.button1.TabIndex = 12;
+            this.button1.Text = "Note: Amount should not be less than 1000";
+            this.button1.UseVisualStyleBackColor = false;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.Color.Transparent;
+            this.label2.Cursor = System.Windows.Forms.Cursors.Default;
+            this.label2.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(128)))), ((int)(((byte)(185)))));
+            this.label2.Location = new System.Drawing.Point(11, 38);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(387, 30);
+            this.label2.TabIndex = 5;
+            this.label2.Text = "Select Initial Amount to Deposit";
             // 
             // CurrentPanel
             // 
@@ -184,34 +213,6 @@ namespace JBankUI
             this.label4.Size = new System.Drawing.Size(387, 30);
             this.label4.TabIndex = 5;
             this.label4.Text = "Select Initial Amount to Deposit";
-            // 
-            // button1
-            // 
-            this.button1.BackColor = System.Drawing.Color.Transparent;
-            this.button1.Cursor = System.Windows.Forms.Cursors.Default;
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Century Gothic", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.button1.ForeColor = System.Drawing.Color.Red;
-            this.button1.Location = new System.Drawing.Point(27, 71);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(358, 34);
-            this.button1.TabIndex = 12;
-            this.button1.Text = "Note: Amount should not be less than 1000";
-            this.button1.UseVisualStyleBackColor = false;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.BackColor = System.Drawing.Color.Transparent;
-            this.label2.Cursor = System.Windows.Forms.Cursors.Default;
-            this.label2.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(128)))), ((int)(((byte)(185)))));
-            this.label2.Location = new System.Drawing.Point(11, 38);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(387, 30);
-            this.label2.TabIndex = 5;
-            this.label2.Text = "Select Initial Amount to Deposit";
             // 
             // label1
             // 
@@ -402,7 +403,7 @@ namespace JBankUI
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox note;
         private System.Windows.Forms.Panel savingsPanel;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Button button1;
